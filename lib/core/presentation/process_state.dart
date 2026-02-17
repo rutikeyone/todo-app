@@ -8,6 +8,10 @@ class ProcessState with _$ProcessState {
     return this is _ProcessInProcessState;
   }
 
+  bool get isSuccess {
+    return this is _ProcessSuccessState;
+  }
+
   const ProcessState._();
 
   const factory ProcessState.initial() = _ProcessInitlaState;

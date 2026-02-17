@@ -61,4 +61,27 @@ final class TodoRepositoryImpl implements TodoRepository {
       return e.map(_todoMapper.toTodoEntity).toList();
     });
   }
+
+  @override
+  Future<void> updateTodo(TodoEntity todo) {
+    final userId = _firebaseAuth.currentUser?.uid;
+    final todoModel = _todoMapper.toTodoModel(todo);
+
+    if (userId == null) {
+      throw Exception('User must bee authorized');
+    }
+
+    return _todoDataSource.updateTodo(userId, todoModel);
+  }
+  
+  @override
+  Future<void> deleteTodo(String todoId) {
+    final userId = _firebaseAuth.currentUser?.uid;
+
+    if (userId == null) {
+      throw Exception('User must bee authorized');
+    }
+
+    return _todoDataSource.deleteTodo(userId, todoId);
+  }
 }

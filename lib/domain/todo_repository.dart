@@ -9,4 +9,8 @@ abstract interface class TodoRepository {
   Stream<List<TodoEntity>> watchTodos();
 
   Future<TodoEntity> fetchTodoById(String todoId);
+
+  Future<void> updateTodo(TodoEntity todo);
+
+  Future<void> deleteTodo(String todoId);
 }

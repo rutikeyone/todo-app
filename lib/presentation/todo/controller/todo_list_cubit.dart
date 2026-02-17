@@ -1,6 +1,7 @@
 import 'dart:async';
 
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:todo_app/core/presentation/process_state.dart';
 import 'package:todo_app/domain/entity/entities.dart';
 import 'package:todo_app/domain/todo_repository.dart';
 import 'package:todo_app/presentation/todo/controller/state/state.dart';
@@ -47,6 +48,29 @@ class TodoListCubit extends Cubit<TodoListState> {
 
   Future<void> logout() {
     return _logoutHandler();
+  }
+
+  Future<void> removeTodo(String? todoId) async {
+    final inProcess = state.removeTodoProcessState.inProcess;
+    if (inProcess || todoId == null) return;
+
+    try {
+      _updateRemoveTodoProcessState(const ProcessState.inProcess());
+
+      await _todoRepository.deleteTodo(todoId);
+
+      _updateRemoveTodoProcessState(const ProcessState.success());
+    } catch (e) {
+      _updateRemoveTodoProcessState(ProcessState.error(error: e));
+    }
+  }
+
+  void _updateRemoveTodoProcessState(ProcessState processState) {
+    emit(
+      state.copyWith(
+        removeTodoProcessState: processState,
+      ),
+    );
   }
 
   @override

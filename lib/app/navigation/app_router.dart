@@ -1,4 +1,3 @@
-import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
 import 'package:todo_app/app/app_state/auth_cubit.dart';
@@ -11,6 +10,7 @@ import 'package:todo_app/presentation/auth/sign_in_page.dart';
 import 'package:todo_app/presentation/todo/add_todo_page.dart';
 import 'package:todo_app/presentation/todo/controller/add_todo_cubit.dart';
 import 'package:todo_app/presentation/todo/controller/todo_list_cubit.dart';
+import 'package:todo_app/presentation/todo/controller/update_todo_cubit.dart';
 import 'package:todo_app/presentation/todo/todo_list_page.dart';
 import 'package:todo_app/presentation/todo/update_todo_page.dart';
 
@@ -110,7 +110,17 @@ GoRouter createRouter(AuthCubit authCubit) {
             path: AppScreens.todoList.updateTodo.relativePath,
             name: AppScreens.todoList.updateTodo.routeName,
             builder: (context, state) {
-              return const UpdateTodoPage();
+              final queryParameters = state.uri.queryParameters;
+              final arguments = AppScreens.todoList.updateTodo
+                  .withUpdateTodoArguments(queryParameters);
+
+              return BlocProvider(
+                create: (context) => UpdateTodoCubit(
+                  todoRepository: context.read<TodoRepository>(),
+                  todoId: arguments.todoId,
+                )..loadData(),
+                child: const UpdateTodoPage(),
+              );
             },
           ),
         ],

@@ -20,6 +20,10 @@ typedef String MessageIfAbsent(String messageStr, List<dynamic> args);
 class MessageLookup extends MessageLookupByLibrary {
   String get localeName => 'ru';
 
+  static String m0(error) => "Ошибка ${error}";
+
+  static String m1(error) => "Не удалось загрузить задачу ${error}";
+
   final messages = _notInlinedMessages(_notInlinedMessages);
   static Map<String, Function> _notInlinedMessages(_) => <String, Function>{
     "add": MessageLookupByLibrary.simpleMessage("Добавить"),
@@ -34,6 +38,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "dontHaveAccount": MessageLookupByLibrary.simpleMessage(
       "Нет аккаунта? Зарегистрироваться",
     ),
+    "editTask": MessageLookupByLibrary.simpleMessage("Редактировать задачу"),
     "email": MessageLookupByLibrary.simpleMessage("Электронная почта"),
     "emailCannotBeEmpty": MessageLookupByLibrary.simpleMessage(
       "Электронная почта не может быть пустой",
@@ -45,7 +50,9 @@ class MessageLookup extends MessageLookupByLibrary {
       "Добавьте свою первую задачу",
     ),
     "emptyListTitle": MessageLookupByLibrary.simpleMessage("Список пуст"),
+    "error": m0,
     "errorOccurred": MessageLookupByLibrary.simpleMessage("Произошла ошибка"),
+    "failedToLoadTask": m1,
     "forgotPassword": MessageLookupByLibrary.simpleMessage("Забыли пароль?"),
     "invalidEmail": MessageLookupByLibrary.simpleMessage(
       "Неверный формат электронной почты",
@@ -57,6 +64,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "notesHint": MessageLookupByLibrary.simpleMessage(
       "Например: обезжиренное, 2 пакета",
     ),
+    "notesLabel": MessageLookupByLibrary.simpleMessage("Заметка / описание"),
     "password": MessageLookupByLibrary.simpleMessage("Пароль"),
     "passwordCannotBeEmpty": MessageLookupByLibrary.simpleMessage(
       "Пароль не может быть пустым",
@@ -82,6 +90,7 @@ class MessageLookup extends MessageLookupByLibrary {
       "Регистрация прошла успешно!",
     ),
     "save": MessageLookupByLibrary.simpleMessage("Сохранить"),
+    "saving": MessageLookupByLibrary.simpleMessage("Сохранение..."),
     "signIn": MessageLookupByLibrary.simpleMessage("Авторизоваться"),
     "signInToContinue": MessageLookupByLibrary.simpleMessage(
       "Войдите, чтобы продолжить",
@@ -94,16 +103,23 @@ class MessageLookup extends MessageLookupByLibrary {
     "something_went_wrong": MessageLookupByLibrary.simpleMessage(
       "Что-то пошло не так...",
     ),
+    "taskCompleted": MessageLookupByLibrary.simpleMessage("Задача выполнена"),
     "taskCreationHint": MessageLookupByLibrary.simpleMessage(
       "Укажите чётко, что нужно сделать.\nЗаметки помогут не забыть важные детали.",
     ),
+    "taskRemoved": MessageLookupByLibrary.simpleMessage("Задача удалена"),
     "taskRequired": MessageLookupByLibrary.simpleMessage(
       "Введите название задачи",
     ),
+    "taskTitle": MessageLookupByLibrary.simpleMessage("Название задачи"),
     "taskTooLong": MessageLookupByLibrary.simpleMessage(
       "Максимум 100 символов",
     ),
     "taskTooShort": MessageLookupByLibrary.simpleMessage("Минимум 2 символа"),
+    "taskUpdateHint": MessageLookupByLibrary.simpleMessage(
+      "Вы можете изменить название и заметки задачи.\nНе забудьте сохранить изменения!",
+    ),
+    "taskUpdated": MessageLookupByLibrary.simpleMessage("Задача обновлена"),
     "tryAgain": MessageLookupByLibrary.simpleMessage("Повторить"),
     "try_again": MessageLookupByLibrary.simpleMessage("Попробовать снова"),
     "welcomeBack": MessageLookupByLibrary.simpleMessage("С возвращением!"),

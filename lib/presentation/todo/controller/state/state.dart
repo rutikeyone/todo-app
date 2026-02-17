@@ -5,4 +5,5 @@ import 'package:todo_app/domain/entity/entities.dart';
 
 part 'add_todo_state.dart';
 part 'todo_list_state.dart';
+part 'update_todo_state.dart';
 part 'state.freezed.dart';

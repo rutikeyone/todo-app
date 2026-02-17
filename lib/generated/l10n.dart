@@ -459,6 +459,109 @@ class S {
       args: [],
     );
   }
+
+  /// `Редактировать задачу`
+  String get editTask {
+    return Intl.message(
+      'Редактировать задачу',
+      name: 'editTask',
+      desc: 'Заголовок страницы редактирования задачи',
+      args: [],
+    );
+  }
+
+  /// `Вы можете изменить название и заметки задачи.\nНе забудьте сохранить изменения!`
+  String get taskUpdateHint {
+    return Intl.message(
+      'Вы можете изменить название и заметки задачи.\nНе забудьте сохранить изменения!',
+      name: 'taskUpdateHint',
+      desc:
+          'Подсказка под полями ввода на экране редактирования задачи: объясняет, что можно изменить и напоминает сохранить изменения',
+      args: [],
+    );
+  }
+
+  /// `Задача обновлена`
+  String get taskUpdated {
+    return Intl.message(
+      'Задача обновлена',
+      name: 'taskUpdated',
+      desc: 'Текст в SnackBar после успешного обновления задачи',
+      args: [],
+    );
+  }
+
+  /// `Ошибка {error}`
+  String error(Object error) {
+    return Intl.message(
+      'Ошибка $error',
+      name: 'error',
+      desc: 'Текст ошибки с параметром error, который содержит описание ошибки',
+      args: [error],
+    );
+  }
+
+  /// `Не удалось загрузить задачу {error}`
+  String failedToLoadTask(Object error) {
+    return Intl.message(
+      'Не удалось загрузить задачу $error',
+      name: 'failedToLoadTask',
+      desc:
+          'Текст ошибки с параметром error, который содержит описание ошибки при загрузке задачи для редактирования',
+      args: [error],
+    );
+  }
+
+  /// `Задача выполнена`
+  String get taskCompleted {
+    return Intl.message(
+      'Задача выполнена',
+      name: 'taskCompleted',
+      desc: 'Текст, отображаемый рядом с иконкой галочки для выполненных задач',
+      args: [],
+    );
+  }
+
+  /// `Сохранение...`
+  String get saving {
+    return Intl.message(
+      'Сохранение...',
+      name: 'saving',
+      desc:
+          'Текст на кнопке сохранения во время выполнения операции сохранения',
+      args: [],
+    );
+  }
+
+  /// `Название задачи`
+  String get taskTitle {
+    return Intl.message(
+      'Название задачи',
+      name: 'taskTitle',
+      desc: 'Лейбл для поля ввода названия задачи',
+      args: [],
+    );
+  }
+
+  /// `Заметка / описание`
+  String get notesLabel {
+    return Intl.message(
+      'Заметка / описание',
+      name: 'notesLabel',
+      desc: 'Лейбл для поля ввода заметки/описания задачи',
+      args: [],
+    );
+  }
+
+  /// `Задача удалена`
+  String get taskRemoved {
+    return Intl.message(
+      'Задача удалена',
+      name: 'taskRemoved',
+      desc: 'Текст в SnackBar после успешного удаления задачи',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {

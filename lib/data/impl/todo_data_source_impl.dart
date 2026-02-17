@@ -34,7 +34,11 @@ final class TodoDataSourceImpl implements TodoDataSource {
   }
 
   @override
-  Future<void> deleteTodo(String userId, String todoId) async {}
+  Future<void> deleteTodo(String userId, String todoId) async {
+    final docPath = _firebaseFirestore.doc("users/todos/$userId/$todoId");
+
+    await docPath.delete();
+  }
 
   @override
   Future<TodoModel> fetchTodoById(String userId, String todoId) async {
@@ -48,7 +52,11 @@ final class TodoDataSourceImpl implements TodoDataSource {
   }
 
   @override
-  Future<void> updateTodo(String userId, TodoModel todo) async {}
+  Future<void> updateTodo(String userId, TodoModel todo) async {
+    final docPath = _firebaseFirestore.doc("users/todos/$userId/${todo.id}");
+
+    await docPath.set(todo.toJson());
+  }
 
   @override
   Stream<List<TodoModel>> watchTodos(String userId) {
